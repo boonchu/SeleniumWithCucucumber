@@ -10,6 +10,7 @@ import Base.BaseUtil;
 
 
 import io.cucumber.java.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
@@ -33,10 +34,17 @@ public class Hook extends BaseUtil{
 
         base.scenarioDef = base.features.createNode(scenario.getName());
 
-        System.out.println("Opening the browser : Firefox");
+        System.out.println("Opening the browser : Chromium");
 
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-        base.Driver = new ChromeDriver();
+
+        // Use headless mode
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=800,400");
+
+        base.Driver = new ChromeDriver(options);
     }
 
 

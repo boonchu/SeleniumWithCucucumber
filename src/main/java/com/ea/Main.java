@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.Console;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.inspector.Inspector;
@@ -31,7 +32,13 @@ public class Main {
 
         //Selenium 4
         System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-        var chromeDriver = new ChromeDriver();
+
+	// Use headless mode
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");     
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=800,400");  
+        var chromeDriver = new ChromeDriver(options);
 
         var chromeDevTools = chromeDriver.getDevTools();
         //Session of ChromeDevTool
