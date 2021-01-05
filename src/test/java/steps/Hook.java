@@ -41,6 +41,7 @@ public class Hook extends BaseUtil{
         // Use headless mode
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=800,400");
 
